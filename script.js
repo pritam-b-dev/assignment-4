@@ -18,6 +18,16 @@ function showTotalNumbersOfJobsSelectReject() {
   availJobs.innerText = jobCards.children.length;
   totalInterviews.innerText = interviewArr.length;
   totalRejects.innerText = rejectedArr.length;
+
+  if (currentStatus === "interview") {
+    availJobs.innerText =
+      interviewArr.length + " of " + jobCards.children.length;
+  } else if (currentStatus === "reject") {
+    availJobs.innerText =
+      rejectedArr.length + " of " + jobCards.children.length;
+  } else {
+    availJobs.innerText = jobCards.children.length;
+  }
 }
 showTotalNumbersOfJobsSelectReject();
 
@@ -50,6 +60,7 @@ for (let button of buttons) {
       interviewSection.classList.add("hidden");
       renderRejected();
     }
+    showTotalNumbersOfJobsSelectReject();
   });
 }
 
@@ -126,6 +137,11 @@ mainContainer.addEventListener("click", function (event) {
 //rendering data after select Interview button and Showing data to the Interview Tab
 function renderInterview() {
   interviewSection.innerHTML = "";
+
+  if (interviewArr.length === 0) {
+    let empty = document.createElement("div");
+  }
+
   for (let interview of interviewArr) {
     let div = document.createElement("div");
     div.className = "card bg-white shadow-sm rounded-md p-4 mb-4";
