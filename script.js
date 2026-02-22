@@ -140,6 +140,14 @@ function renderInterview() {
 
   if (interviewArr.length === 0) {
     let empty = document.createElement("div");
+    empty.innerHTML = `
+    <div class="bg-white shadow-sm rounded-md p-10 text-center">
+      <img class="w-[100px] h-[100px] mx-auto" src="file.png" alt="" />
+      <p class="font-bold text-2xl">No jobs available</p>
+      <p class="text-[#64748B]">Check back soon for new job opportunities</p>
+    </div>
+    `;
+    interviewSection.appendChild(empty);
   }
 
   for (let interview of interviewArr) {
@@ -182,6 +190,19 @@ function renderInterview() {
 
 function renderRejected() {
   rejectedSection.innerHTML = "";
+
+  if (interviewArr.length === 0) {
+    let empty = document.createElement("div");
+    empty.innerHTML = `
+    <div class="bg-white shadow-sm rounded-md p-10 text-center">
+      <img class="w-[100px] h-[100px] mx-auto" src="file.png" alt="" />
+      <p class="font-bold text-2xl">No jobs available</p>
+      <p class="text-[#64748B]">Check back soon for new job opportunities</p>
+    </div>
+    `;
+    rejectedSection.appendChild(empty);
+  }
+
   for (let rejected of rejectedArr) {
     let div = document.createElement("div");
     div.className = "card bg-white shadow-sm rounded-md p-4 mb-4";
