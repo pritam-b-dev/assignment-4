@@ -24,22 +24,24 @@
       }
     </style>
   </head>
-  <body class="min-h-screen max-w-screen-lg mx-auto bg-[#f1f2f4]">
+  <body class="min-h-screen max-w-5xl mx-auto bg-[#f1f2f4]">
     <header>
       <h1 class="font-bold text-4xl pt-8">Job Application Tracker</h1>
       <br />
       <div class="grid grid-cols-3 gap-4">
         <div class="bg-white p-5 rounded-md">
           <p class="text-[#323B49] font-medium text-[14px]">Total</p>
-          <p class="font-bold text-2xl text-black-500">0</p>
+          <p id="total-jobs" class="font-bold text-2xl text-black-500">0</p>
         </div>
         <div class="bg-white p-5 rounded-md">
           <p class="text-[#323B49] font-medium text-[14px]">Interview</p>
-          <p class="font-bold text-2xl text-green-500">0</p>
+          <p id="total-interviews" class="font-bold text-2xl text-green-500">
+            0
+          </p>
         </div>
         <div class="bg-white p-5 rounded-md">
           <p class="text-[#323B49] font-medium text-[14px]">Reject</p>
-          <p class="font-bold text-2xl text-red-500">0</p>
+          <p id="total-rejects" class="font-bold text-2xl text-red-500">0</p>
         </div>
       </div>
     </header>
@@ -49,7 +51,9 @@
     <section>
       <div class="flex justify-between">
         <p class="text-xl font-semiboldbold">Available Jobs</p>
-        <p class="font-medium text-[#64748B]">8 Jobs</p>
+        <p class="font-medium text-[#64748B]">
+          <span id="avail-jobs">0</span> Jobs
+        </p>
       </div>
     </section>
     <br />
@@ -320,5 +324,6 @@
       </div>
     </main>
     <br /><br />
+    <script src="script.js"></script>
   </body>
 </html>
