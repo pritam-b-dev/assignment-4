@@ -61,25 +61,25 @@
       <div id="btn-tab">
         <button
           id="btn-all"
-          class="bg-blue-500 text-white text-[12px] font-semibold py-3 px-8 rounded-md cursor-pointer mr-3 border border-gray-200"
+          class="btnAllTab bg-blue-500 text-white text-[12px] font-semibold py-3 px-8 rounded-md cursor-pointer mr-3 border border-gray-200"
         >
           All
         </button>
         <button
           id="btn-interview"
-          class="bg-white text-[#64748B] text-[12px] font-medium py-3 px-8 rounded-md cursor-pointer mr-3 border border-gray-200"
+          class="btnInterviewTab bg-white text-[#64748B] text-[12px] font-medium py-3 px-8 rounded-md cursor-pointer mr-3 border border-gray-200"
         >
           Interview
         </button>
         <button
           id="btn-rejected"
-          class="bg-white text-[#64748B] text-[12px] font-medium py-3 px-8 rounded-md cursor-pointer mr-3 border border-gray-200"
+          class="btnRejectTab bg-white text-[#64748B] text-[12px] font-medium py-3 px-8 rounded-md cursor-pointer mr-3 border border-gray-200"
         >
           Rejected
         </button>
       </div>
-      <section id="interviews-section"></section>
-      <div id="job-cards">
+      <section id="interviews-section" class="hidden"></section>
+      <div id="job-cards" class="allJobsSection">
         <div id="" class="card bg-white shadow-sm rounded-md p-4 mb-4">
           <div class="job-title flex justify-between">
             <div>
@@ -102,12 +102,12 @@
           </p>
           <br />
           <button
-            class="text-green-500 border border-green-500 py-2 px-3 mr-4 rounded-md cursor-pointer"
+            class="interview-btn text-green-500 border border-green-500 py-2 px-3 mr-4 rounded-md cursor-pointer"
           >
             interview
           </button>
           <button
-            class="text-red-500 border border-red-500 py-2 px-3 rounded-md cursor-pointer"
+            class="rejected-btn text-red-500 border border-red-500 py-2 px-3 rounded-md cursor-pointer"
           >
             Rejected
           </button>
@@ -134,12 +134,12 @@
           </p>
           <br />
           <button
-            class="text-green-500 border border-green-500 py-2 px-3 mr-4 rounded-md cursor-pointer"
+            class="interview-btn text-green-500 border border-green-500 py-2 px-3 mr-4 rounded-md cursor-pointer"
           >
             interview
           </button>
           <button
-            class="text-red-500 border border-red-500 py-2 px-3 rounded-md cursor-pointer"
+            class="rejected-btn text-red-500 border border-red-500 py-2 px-3 rounded-md cursor-pointer"
           >
             Rejected
           </button>
@@ -168,12 +168,12 @@
           </p>
           <br />
           <button
-            class="text-green-500 border border-green-500 py-2 px-3 mr-4 rounded-md cursor-pointer"
+            class="interview-btn text-green-500 border border-green-500 py-2 px-3 mr-4 rounded-md cursor-pointer"
           >
             interview
           </button>
           <button
-            class="text-red-500 border border-red-500 py-2 px-3 rounded-md cursor-pointer"
+            class="rejected-btn text-red-500 border border-red-500 py-2 px-3 rounded-md cursor-pointer"
           >
             Rejected
           </button>
@@ -200,12 +200,12 @@
           </p>
           <br />
           <button
-            class="text-green-500 border border-green-500 py-2 px-3 mr-4 rounded-md cursor-pointer"
+            class="interview-btn text-green-500 border border-green-500 py-2 px-3 mr-4 rounded-md cursor-pointer"
           >
             interview
           </button>
           <button
-            class="text-red-500 border border-red-500 py-2 px-3 rounded-md cursor-pointer"
+            class="rejected-btn text-red-500 border border-red-500 py-2 px-3 rounded-md cursor-pointer"
           >
             Rejected
           </button>
@@ -233,12 +233,12 @@
           </p>
           <br />
           <button
-            class="text-green-500 border border-green-500 py-2 px-3 mr-4 rounded-md cursor-pointer"
+            class="interview-btn text-green-500 border border-green-500 py-2 px-3 mr-4 rounded-md cursor-pointer"
           >
             interview
           </button>
           <button
-            class="text-red-500 border border-red-500 py-2 px-3 rounded-md cursor-pointer"
+            class="rejected-btn text-red-500 border border-red-500 py-2 px-3 rounded-md cursor-pointer"
           >
             Rejected
           </button>
@@ -266,12 +266,12 @@
           </p>
           <br />
           <button
-            class="text-green-500 border border-green-500 py-2 px-3 mr-4 rounded-md cursor-pointer"
+            class="interview-btn text-green-500 border border-green-500 py-2 px-3 mr-4 rounded-md cursor-pointer"
           >
             interview
           </button>
           <button
-            class="text-red-500 border border-red-500 py-2 px-3 rounded-md cursor-pointer"
+            class="rejected-btn text-red-500 border border-red-500 py-2 px-3 rounded-md cursor-pointer"
           >
             Rejected
           </button>
@@ -299,12 +299,12 @@
           </p>
           <br />
           <button
-            class="text-green-500 border border-green-500 py-2 px-3 mr-4 rounded-md cursor-pointer"
+            class="interview-btn text-green-500 border border-green-500 py-2 px-3 mr-4 rounded-md cursor-pointer"
           >
             interview
           </button>
           <button
-            class="text-red-500 border border-red-500 py-2 px-3 rounded-md cursor-pointer"
+            class="rejected-btn text-red-500 border border-red-500 py-2 px-3 rounded-md cursor-pointer"
           >
             Rejected
           </button>
@@ -332,12 +332,12 @@
           </p>
           <br />
           <button
-            class="text-green-500 border border-green-500 py-2 px-3 mr-4 rounded-md cursor-pointer"
+            class="interview-btn text-green-500 border border-green-500 py-2 px-3 mr-4 rounded-md cursor-pointer"
           >
             interview
           </button>
           <button
-            class="text-red-500 border border-red-500 py-2 px-3 rounded-md cursor-pointer"
+            class="rejected-btn text-red-500 border border-red-500 py-2 px-3 rounded-md cursor-pointer"
           >
             Rejected
           </button>
