@@ -10,11 +10,14 @@ let btnRejected = document.getElementById("btn-rejected");
 let interviewArr = [];
 let rejectedArr = [];
 let interviewSection = document.getElementById("interviews-section");
+let rejectedSection = document.getElementById("rejected-section");
+let currentStatus = "btnAllTab";
 
 function showTotalNumbersOfJobsSelectReject() {
   totalJobs.innerText = jobCards.children.length;
   availJobs.innerText = jobCards.children.length;
   totalInterviews.innerText = interviewArr.length;
+  totalRejects.innerText = rejectedArr.length;
 }
 showTotalNumbersOfJobsSelectReject();
 
@@ -26,14 +29,26 @@ for (let button of buttons) {
       btn.classList.remove("bg-blue-500", "text-white");
       btn.classList.add("bg-white", "text-[#64748B]");
     }
+    currentStatus = button.className;
     button.classList.remove("bg-white", "text-[#64748B]");
     button.classList.add("bg-blue-500", "text-white");
     if (button.classList.contains("btnInterviewTab")) {
+      currentStatus = "interview";
       jobCards.classList.add("hidden");
+      rejectedSection.classList.add("hidden");
       interviewSection.classList.remove("hidden");
+      renderInterview();
     } else if (button.classList.contains("btnAllTab")) {
+      currentStatus = "all";
       jobCards.classList.remove("hidden");
+      rejectedSection.classList.add("hidden");
       interviewSection.classList.add("hidden");
+    } else if (button.classList.contains("btnRejectTab")) {
+      currentStatus = "reject";
+      jobCards.classList.add("hidden");
+      rejectedSection.classList.remove("hidden");
+      interviewSection.classList.add("hidden");
+      renderRejected();
     }
   });
 }
@@ -41,6 +56,7 @@ for (let button of buttons) {
 //add and show the job cards to interview and rejected buttons when clicked.
 
 mainContainer.addEventListener("click", function (event) {
+  // when clicked in Interview Button on a card
   if (event.target.classList.contains("interview-btn")) {
     const parent = event.target.parentNode;
 
@@ -63,11 +79,51 @@ mainContainer.addEventListener("click", function (event) {
     if (!exist) {
       interviewArr.push(jobInfo);
     }
+
+    rejectedArr = rejectedArr.filter(
+      (item) => item.company !== jobInfo.company,
+    );
+
     showTotalNumbersOfJobsSelectReject();
-    renderInterview();
+    if (currentStatus == "reject") {
+      renderRejected();
+    }
+  }
+  // when clicked in Reject Button on a card
+  else if (event.target.classList.contains("rejected-btn")) {
+    const parent = event.target.parentNode;
+
+    const company = parent.querySelector(".company").innerText;
+    const position = parent.querySelector(".position").innerText;
+    const salary = parent.querySelector(".salary").innerText;
+    const status = parent.querySelector(".status").innerText;
+    const description = parent.querySelector(".description").innerText;
+    parent.querySelector(".status").innerText = "Rejected";
+    const jobInfo = {
+      company,
+      position,
+      salary,
+      status: "Rejected",
+      description,
+    };
+
+    const exist = rejectedArr.find((item) => item.company === jobInfo.company);
+
+    if (!exist) {
+      rejectedArr.push(jobInfo);
+    }
+    interviewArr = interviewArr.filter(
+      (item) => item.company !== jobInfo.company,
+    );
+
+    showTotalNumbersOfJobsSelectReject();
+    if (currentStatus == "interview") {
+      renderInterview();
+    }
   }
 });
 
+//rendering data after select Interview button and Showing data to the Interview Tab
 function renderInterview() {
   interviewSection.innerHTML = "";
   for (let interview of interviewArr) {
@@ -94,16 +150,56 @@ function renderInterview() {
           </p>
           <br />
           <button
-            class="text-green-500 border border-green-500 py-2 px-3 mr-4 rounded-md cursor-pointer"
+            class="interview-btn text-green-500 border border-green-500 py-2 px-3 mr-4 rounded-md cursor-pointer"
           >
             interview
           </button>
           <button
-            class="text-red-500 border border-red-500 py-2 px-3 rounded-md cursor-pointer"
+            class="rejected-btn text-red-500 border border-red-500 py-2 px-3 rounded-md cursor-pointer"
           >
             Rejected
           </button>
     `;
     interviewSection.appendChild(div);
+  }
+}
+
+function renderRejected() {
+  rejectedSection.innerHTML = "";
+  for (let rejected of rejectedArr) {
+    let div = document.createElement("div");
+    div.className = "card bg-white shadow-sm rounded-md p-4 mb-4";
+    div.innerHTML = `
+    <div class="job-title flex justify-between">
+            <div>
+              <h1 class="company font-semibold text-xl">${rejected.company}</h1>
+              <p class="position text-[#64748B]">${rejected.position}</p>
+            </div>
+            <button class="cursor-pointer">
+              <i class="fa-solid fa-trash-can"></i>
+            </button>
+          </div>
+          <p class="salary text-[14px] text-[#64748B]">
+            ${rejected.salary}
+          </p>
+          <button class="status p-2 rounded-md bg-[#EEF4FF]">
+            ${rejected.status}
+          </button>
+          <p class="description text-[#323B49] text-[14px]">
+            ${rejected.description}
+          </p>
+          <br />
+          <button
+            class="interview-btn text-green-500 border border-green-500 py-2 px-3 mr-4 rounded-md cursor-pointer"
+          >
+            interview
+          </button>
+          <button
+            class="rejected-btn text-red-500 border border-red-500 py-2 px-3 rounded-md cursor-pointer"
+          >
+            Rejected
+          </button>
+    `;
+    rejectedSection.appendChild(div);
   }
 }
