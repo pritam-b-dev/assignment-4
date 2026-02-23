@@ -11,7 +11,7 @@ let interviewArr = [];
 let rejectedArr = [];
 let interviewSection = document.getElementById("interviews-section");
 let rejectedSection = document.getElementById("rejected-section");
-let currentStatus = "btnAllTab";
+let currentStatus = "";
 
 function showTotalNumbersOfJobsSelectReject() {
   totalJobs.innerText = jobCards.children.length;
@@ -109,6 +109,7 @@ mainContainer.addEventListener("click", function (event) {
       renderRejected();
     }
   }
+
   // when clicked in Reject Button on a card
   else if (event.target.classList.contains("rejected-btn")) {
     const parent = event.target.parentNode;
