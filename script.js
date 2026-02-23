@@ -73,6 +73,8 @@ mainContainer.addEventListener("click", function (event) {
     card.remove();
     interviewArr = interviewArr.filter((item) => item.company !== company);
     rejectedArr = rejectedArr.filter((item) => item.company !== company);
+    renderRejected();
+    renderInterview();
     showTotalNumbersOfJobsSelectReject();
   }
 
