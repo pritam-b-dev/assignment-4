@@ -39,7 +39,6 @@ for (let button of buttons) {
       btn.classList.remove("bg-blue-500", "text-white");
       btn.classList.add("bg-white", "text-[#64748B]");
     }
-    currentStatus = button.className;
     button.classList.remove("bg-white", "text-[#64748B]");
     button.classList.add("bg-blue-500", "text-white");
     if (button.classList.contains("btnInterviewTab")) {
@@ -132,6 +131,18 @@ mainContainer.addEventListener("click", function (event) {
     if (currentStatus == "reject") {
       renderRejected();
     }
+
+    const allCards = jobCards.children;
+    for (let card of allCards) {
+      const cardCompany = card.querySelector(".company").innerText;
+      if (cardCompany === company) {
+        card.querySelector(".status").innerHTML = `<button
+            class="interview-btn text-green-500 border border-green-500 px-1 rounded-sm"
+            >
+            interview
+            </button>`;
+      }
+    }
   }
 
   // when clicked in Reject Button on a card
@@ -176,6 +187,17 @@ mainContainer.addEventListener("click", function (event) {
     showTotalNumbersOfJobsSelectReject();
     if (currentStatus == "interview") {
       renderInterview();
+    }
+    const allCards = jobCards.children;
+    for (let card of allCards) {
+      const cardCompany = card.querySelector(".company").innerText;
+      if (cardCompany === company) {
+        card.querySelector(".status").innerHTML = `<button
+            class="interview-btn text-red-500 border border-red-500 px-1 rounded-sm"
+            >
+            Rejected
+            </button> `;
+      }
     }
   }
 });
