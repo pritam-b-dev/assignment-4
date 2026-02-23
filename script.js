@@ -71,8 +71,18 @@ mainContainer.addEventListener("click", function (event) {
     const card = event.target.closest(".card");
     const company = card.querySelector(".company").innerText;
     card.remove();
+
     interviewArr = interviewArr.filter((item) => item.company !== company);
     rejectedArr = rejectedArr.filter((item) => item.company !== company);
+
+    const allCards = jobCards.children;
+    for (let card of allCards) {
+      const cardCompany = card.querySelector(".company").innerText;
+      if (cardCompany === company) {
+        card.querySelector(".status").innerHTML = `<div class="status"></div>`;
+      }
+    }
+
     renderRejected();
     renderInterview();
     showTotalNumbersOfJobsSelectReject();
