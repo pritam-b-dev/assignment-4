@@ -67,6 +67,15 @@ for (let button of buttons) {
 //add and show the job cards to interview and rejected buttons when clicked.
 
 mainContainer.addEventListener("click", function (event) {
+  if (event.target.closest(".fa-trash-can")) {
+    const card = event.target.closest(".card");
+    const company = card.querySelector(".company").innerText;
+    card.remove();
+    interviewArr = interviewArr.filter((item) => item.company !== company);
+    rejectedArr = rejectedArr.filter((item) => item.company !== company);
+    showTotalNumbersOfJobsSelectReject();
+  }
+
   // when clicked in Interview Button on a card
   if (event.target.classList.contains("interview-btn")) {
     const parent = event.target.parentNode;
@@ -148,12 +157,11 @@ function renderInterview() {
     </div>
     `;
     interviewSection.appendChild(empty);
-  }
-
-  for (let interview of interviewArr) {
-    let div = document.createElement("div");
-    div.className = "card bg-white shadow-sm rounded-md p-4 mb-4";
-    div.innerHTML = `
+  } else if (interviewArr.length > 0) {
+    for (let interview of interviewArr) {
+      let div = document.createElement("div");
+      div.className = "card bg-white shadow-sm rounded-md p-4 mb-4";
+      div.innerHTML = `
     <div class="job-title flex justify-between">
             <div>
               <h1 class="company font-semibold text-xl">${interview.company}</h1>
@@ -184,14 +192,15 @@ function renderInterview() {
             Rejected
           </button>
     `;
-    interviewSection.appendChild(div);
+      interviewSection.appendChild(div);
+    }
   }
 }
 
 function renderRejected() {
   rejectedSection.innerHTML = "";
 
-  if (interviewArr.length === 0) {
+  if (rejectedArr.length === 0) {
     let empty = document.createElement("div");
     empty.innerHTML = `
     <div class="bg-white shadow-sm rounded-md p-10 text-center">
@@ -201,12 +210,11 @@ function renderRejected() {
     </div>
     `;
     rejectedSection.appendChild(empty);
-  }
-
-  for (let rejected of rejectedArr) {
-    let div = document.createElement("div");
-    div.className = "card bg-white shadow-sm rounded-md p-4 mb-4";
-    div.innerHTML = `
+  } else if (rejectedArr.length > 0) {
+    for (let rejected of rejectedArr) {
+      let div = document.createElement("div");
+      div.className = "card bg-white shadow-sm rounded-md p-4 mb-4";
+      div.innerHTML = `
     <div class="job-title flex justify-between">
             <div>
               <h1 class="company font-semibold text-xl">${rejected.company}</h1>
@@ -237,6 +245,7 @@ function renderRejected() {
             Rejected
           </button>
     `;
-    rejectedSection.appendChild(div);
+      rejectedSection.appendChild(div);
+    }
   }
 }
