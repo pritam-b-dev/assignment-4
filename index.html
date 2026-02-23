@@ -24,22 +24,24 @@
       }
     </style>
   </head>
-  <body class="min-h-screen max-w-5xl mx-auto bg-[#f1f2f4]">
+  <body class="min-h-screen max-w-5xl mx-auto bg-[#f1f2f4] px-4 sm:px-0">
     <header>
-      <h1 class="font-bold text-4xl pt-8">Job Application Tracker</h1>
+      <h1 class="font-bold text-3xl text-center sm:text-start sm:text-4xl pt-8">
+        Job Application Tracker
+      </h1>
       <br />
-      <div class="grid grid-cols-3 gap-4">
-        <div class="bg-white p-5 rounded-md">
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        <div class="bg-white p-2 sm:p-5 rounded-md text-center sm:text-start">
           <p class="text-[#323B49] font-medium text-[14px]">Total</p>
           <p id="total-jobs" class="font-bold text-2xl text-black-500">0</p>
         </div>
-        <div class="bg-white p-5 rounded-md">
+        <div class="bg-white p-2 sm:p-5 rounded-md text-center sm:text-start">
           <p class="text-[#323B49] font-medium text-[14px]">Interview</p>
           <p id="total-interviews" class="font-bold text-2xl text-green-500">
             0
           </p>
         </div>
-        <div class="bg-white p-5 rounded-md">
+        <div class="bg-white p-2 sm:p-5 rounded-md text-center sm:text-start">
           <p class="text-[#323B49] font-medium text-[14px]">Reject</p>
           <p id="total-rejects" class="font-bold text-2xl text-red-500">0</p>
         </div>
@@ -345,7 +347,6 @@
         </div>
       </div>
     </main>
-    <br /><br />
 
     <script src="script.js"></script>
   </body>
