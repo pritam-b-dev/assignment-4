@@ -209,7 +209,7 @@ function renderInterview() {
   if (interviewArr.length === 0) {
     let empty = document.createElement("div");
     empty.innerHTML = `
-    <div class="bg-white shadow-sm rounded-md p-10 text-center">
+    <div class="bg-white shadow-sm rounded-md p-10 text-center mt-8 mb-0 sm:mb-8 sm:mt-0">
       <img class="w-[100px] h-[100px] mx-auto" src="file.png" alt="" />
       <p class="font-bold text-2xl">No jobs available</p>
       <p class="text-[#64748B]">Check back soon for new job opportunities</p>
@@ -259,7 +259,7 @@ function renderRejected() {
   if (rejectedArr.length === 0) {
     let empty = document.createElement("div");
     empty.innerHTML = `
-    <div class="bg-white shadow-sm rounded-md p-10 text-center">
+    <div class="bg-white shadow-sm rounded-md p-10 text-center mt-8 mb-0 sm:mb-8 sm:mt-0">
       <img class="w-[100px] h-[100px] mx-auto" src="file.png" alt="" />
       <p class="font-bold text-2xl">No jobs available</p>
       <p class="text-[#64748B]">Check back soon for new job opportunities</p>
