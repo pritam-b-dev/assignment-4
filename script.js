@@ -85,12 +85,24 @@ mainContainer.addEventListener("click", function (event) {
     const salary = parent.querySelector(".salary").innerText;
     const status = parent.querySelector(".status").innerText;
     const description = parent.querySelector(".description").innerText;
-    parent.querySelector(".status").innerText = "Interview";
+    parent.querySelector(".status").innerHTML = `
+            <button
+            class="interview-btn text-green-500 border border-green-500 px-1 rounded-sm"
+            >
+            interview
+            </button>
+    `;
     const jobInfo = {
       company,
       position,
       salary,
-      status: "Interview",
+      status: `
+            <button
+            class="interview-btn text-green-500 border border-green-500 px-1 rounded-sm"
+            >
+            interview
+            </button>
+    `,
       description,
     };
 
@@ -119,12 +131,24 @@ mainContainer.addEventListener("click", function (event) {
     const salary = parent.querySelector(".salary").innerText;
     const status = parent.querySelector(".status").innerText;
     const description = parent.querySelector(".description").innerText;
-    parent.querySelector(".status").innerText = "Rejected";
+    parent.querySelector(".status").innerHTML = `
+            <button
+            class="interview-btn text-red-500 border border-red-500 px-1 rounded-sm"
+            >
+            Rejected
+            </button>
+    `;
     const jobInfo = {
       company,
       position,
       salary,
-      status: "Rejected",
+      status: `
+            <button
+            class="interview-btn text-red-500 border border-red-500 px-1 rounded-sm"
+            >
+            Rejected
+            </button> 
+            `,
       description,
     };
 
@@ -161,7 +185,7 @@ function renderInterview() {
   } else if (interviewArr.length > 0) {
     for (let interview of interviewArr) {
       let div = document.createElement("div");
-      div.className = "card bg-white shadow-sm rounded-md p-4 mb-4";
+      div.className = "card bg-white shadow-sm rounded-md p-4 mb-4 space-y-2";
       div.innerHTML = `
     <div class="job-title flex justify-between">
             <div>
@@ -175,20 +199,17 @@ function renderInterview() {
           <p class="salary text-[14px] text-[#64748B]">
             ${interview.salary}
           </p>
-          <button class="status p-2 rounded-md bg-[#EEF4FF]">
-            ${interview.status}
-          </button>
+          <div class="status">${interview.status}</div>
           <p class="description text-[#323B49] text-[14px]">
             ${interview.description}
           </p>
-          <br />
           <button
-            class="interview-btn text-green-500 border border-green-500 py-2 px-3 mr-4 rounded-md cursor-pointer"
+            class="interview-btn text-green-500 border border-green-500 py-2 px-3 mr-4 rounded-md cursor-pointer hover:bg-green-100"
           >
             interview
           </button>
           <button
-            class="rejected-btn text-red-500 border border-red-500 py-2 px-3 rounded-md cursor-pointer"
+            class="rejected-btn text-red-500 border border-red-500 py-2 px-3 rounded-md cursor-pointer hover:bg-red-100"
           >
             Rejected
           </button>
@@ -214,7 +235,7 @@ function renderRejected() {
   } else if (rejectedArr.length > 0) {
     for (let rejected of rejectedArr) {
       let div = document.createElement("div");
-      div.className = "card bg-white shadow-sm rounded-md p-4 mb-4";
+      div.className = "card bg-white shadow-sm rounded-md p-4 mb-4 space-y-2";
       div.innerHTML = `
     <div class="job-title flex justify-between">
             <div>
@@ -228,20 +249,17 @@ function renderRejected() {
           <p class="salary text-[14px] text-[#64748B]">
             ${rejected.salary}
           </p>
-          <button class="status p-2 rounded-md bg-[#EEF4FF]">
-            ${rejected.status}
-          </button>
+          <div class="status">${rejected.status}</div>
           <p class="description text-[#323B49] text-[14px]">
             ${rejected.description}
           </p>
-          <br />
           <button
-            class="interview-btn text-green-500 border border-green-500 py-2 px-3 mr-4 rounded-md cursor-pointer"
+            class="interview-btn text-green-500 border border-green-500 py-2 px-3 mr-4 rounded-md cursor-pointer hover:bg-green-100"
           >
             interview
           </button>
           <button
-            class="rejected-btn text-red-500 border border-red-500 py-2 px-3 rounded-md cursor-pointer"
+            class="rejected-btn text-red-500 border border-red-500 py-2 px-3 rounded-md cursor-pointer hover:bg-red-100"
           >
             Rejected
           </button>
